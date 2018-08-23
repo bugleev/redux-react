@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 //import { routerStateReducer } from 'redux-router'
 import ActionTypes from "../constants";
+import { LOG_STUFF, RETRIEVE_USERS_START } from "../actions";
 
 const initialState = {
   isFetching: false,
@@ -12,12 +13,12 @@ const initialState = {
 
 export function messages(state = initialState, action) {
   switch (action.type) {
-    case ActionTypes.LOG_STUFF:
+    case LOG_STUFF:
       return Object.assign({}, state, {
         text: "test message"
       });
 
-    case ActionTypes.RETRIEVE_USERS_START:
+    case RETRIEVE_USERS_START:
       return Object.assign({}, state, {
         isFetching: true
       });
@@ -26,12 +27,12 @@ export function messages(state = initialState, action) {
         isFetching: false,
         errorDetails: "Error"
       });
-    case ActionTypes.RETRIEVE_USERS_SUCCESS:
-      const userOrder = action.order === "first" ? "userInfo_1" : "userInfo_2";
-      return Object.assign({}, state, {
-        isFetching: false,
-        [userOrder]: action.payload
-      });
+    // case ActionTypes.RETRIEVE_USERS_SUCCESS:
+    //   const userOrder = action.order === "first" ? "userInfo_1" : "userInfo_2";
+    //   return Object.assign({}, state, {
+    //     isFetching: false,
+    //     [userOrder]: action.payload
+    //   });
     default:
       return state;
   }
