@@ -1,13 +1,126 @@
 @import '_variables.sass'
 
 body 
-  background: $primary
+  height: 100vh
+  margin: 0
+  background-color: #fefefe
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
 
 .container
+  min-width: 1080px  
+  padding: 0 1rem
+  margin: 0 auto
+  display: flex 
+  flex-direction: column
+  h1
+    text-align: center
+hr 
+  border: 0
+  clear:both
+  display:block
+  width: 96%               
+  background-color:#333
+  height: 1px
+
+.dev-wrapper 
+  display: flex
+  background-color: #e5e5e5 
+  height: 700px
+  box-shadow: $elevation_2 
+  >div
+    padding: 1rem
+    h4
+      text-align: center
+.main-wrapper  
+  display: flex
+  background-color: #e5e5e5 
+  min-height: 700px
+  box-shadow: $elevation_2
+  justify-content: center
+  align-items: center 
+  h4
+    text-align: center
+.controls-wrapper
+  background: #e5e5e5
+  position: relative
+  flex-basis: 350px
+  min-width: 350px 
   display: flex
   flex-direction: column
-  max-width: 1080px
-  margin: 0 auto
+  overflow: auto
+  .control-item
+    display: flex
+    text-align: left
+    flex-direction: column
+    button
+      margin: 0.5rem 0
+      width: 50%
+  .input-item
+    display: flex
+    text-align: left
+    flex-direction: column
+    margin: 0.5rem 0
+    input
+      margin: 0.5rem 0
+      width: 50%
 
+.state-wrapper
+  background-color: #fcfef1
+  flex-basis: 250px
+  min-width: 250px
+ 
+.request-body
+  height: 200px
+  text-align: center 
+  font-size: 1.5rem
+.error-body
+  color: red   
+  font-size: 1.5rem
+  text-align: center
 
+  
+.output-wrapper
+  background-color: #e5e5e5
+  flex-grow: 1  
+  .output-body
+    padding: 0.8rem    
+    font-size: 0.9rem
+    box-shadow: inset 2px 2px 18px -6px rgba(0,0,0,0.35), inset -2px -2px 18px -6px rgba(0,0,0,0.35)
+    background-color: #f3e6b8
+    width: 80%    
+    margin: 0 auto
+    pre 
+      padding: 5px
+      margin: 5px
+      height: 500px      
+      overflow-y: auto
+      .string
+        color: green
+      .numberc
+        color: darkorange
+      .boolean
+        color: blue    
+      .null
+        color: magenta    
+      .key
+        color: red
+.input-form
+  display: flex
+  flex-direction: column
+  >div
+    display: flex
+    justify-content: space-between
+    align-items: center
+header  
+  background-color: #fbfbfb  
+.links-wrapper
+  padding: 1rem
+  display: flex
+  button
+    width: 100px
+    height: 40px
+    margin: 0 0.5rem
+    box-shadow: $elevation_1
+  a.active button
+    background-color: #7878ad
+    border: none   

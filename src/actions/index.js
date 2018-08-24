@@ -1,38 +1,32 @@
-import ActionTypes from "../constants";
-import * as urls from "../configs/enviroment";
 import { makeActionCreator } from "../utils/makeActionCreator";
 
 // Actions
 
-export const LOG_STUFF = "LOG_STUFF";
-export const printMessage = makeActionCreator(LOG_STUFF);
+export const FETCH_DATA_START = "FETCH_DATA_START";
+export const retrieveFetchStart = makeActionCreator(FETCH_DATA_START);
 
-export const RETRIEVE_USERS_START = "RETRIEVE_USERS_START";
-export const retrieveUsersStart = makeActionCreator(RETRIEVE_USERS_START);
-
-export const RETRIEVE_USERS_ERROR = "RETRIEVE_USERS_ERROR";
-export const retrieveUsersError = makeActionCreator(
-  RETRIEVE_USERS_ERROR,
-  "error"
-);
-export const RETRIEVE_USERS_SUCCESS = "RETRIEVE_USERS_SUCCESS";
-export const retrieveUsersSuccess = makeActionCreator(
-  RETRIEVE_USERS_SUCCESS,
+export const FETCH_DATA_ERROR = "FETCH_DATA_ERROR";
+export const retrieveFetchError = makeActionCreator(FETCH_DATA_ERROR, "error");
+export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
+export const retrieveFetchSuccess = makeActionCreator(
+  FETCH_DATA_SUCCESS,
   "response",
-  "order"
+  "args"
 );
-
 export const FETCH_USER = "FETCH_USER";
-export const retrieveUsers = makeActionCreator(FETCH_USER, "URL_order");
-// export const retrieveUsersError = error => {
+export const retrieveUsers = makeActionCreator(FETCH_USER);
+export const POST_USER = "POST_USER";
+export const addUser = makeActionCreator(POST_USER, "data");
+
+// export const retrieveFetchError = error => {
 //   return {
-//     type: ActionTypes.RETRIEVE_USERS_ERROR,
+//     type: ActionTypes.FETCH_DATA_ERROR,
 //     payload: error
 //   };
 // };
-// export const retrieveUsersSuccess = (response, order) => {
+// export const retrieveFetchSuccess = (response, order) => {
 //   return {
-//     type: ActionTypes.RETRIEVE_USERS_SUCCESS,
+//     type: ActionTypes.FETCH_DATA_SUCCESS,
 //     payload: response,
 //     order: order
 //   };
@@ -47,10 +41,10 @@ export const retrieveUsers = makeActionCreator(FETCH_USER, "URL_order");
 //       method: "GET"
 //     });
 
-//     dispatch(retrieveUsersStart());
+//     dispatch(retrieveFetchStart());
 //     return fetch(request)
 //       .then(response => response.json())
-//       .then(result => dispatch(retrieveUsersSuccess(result, URL_order)))
-//       .catch(error => dispatch(retrieveUsersError(error)));
+//       .then(result => dispatch(retrieveFetchSuccess(result, URL_order)))
+//       .catch(error => dispatch(retrieveFetchError(error)));
 //   };
 // };

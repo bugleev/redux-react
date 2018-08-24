@@ -1,45 +1,42 @@
 import { combineReducers } from "redux";
 //import { routerStateReducer } from 'redux-router'
-import ActionTypes from "../constants";
-import { LOG_STUFF, RETRIEVE_USERS_START } from "../actions";
+
+import {
+  FETCH_DATA_START,
+  FETCH_DATA_ERROR,
+  FETCH_DATA_SUCCESS
+} from "../actions";
 
 const initialState = {
   isFetching: false,
-  text: "preloaded",
   errorDetails: "",
-  userInfo_1: null,
-  userInfo_2: null
+  dataOutput: null
 };
 
-export function messages(state = initialState, action) {
+export function users(state = initialState, action) {
   switch (action.type) {
-    case LOG_STUFF:
-      return Object.assign({}, state, {
-        text: "test message"
-      });
-
-    case RETRIEVE_USERS_START:
+    case FETCH_DATA_START:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case ActionTypes.RETRIEVE_USERS_ERROR:
+    case FETCH_DATA_ERROR:
       return Object.assign({}, state, {
         isFetching: false,
-        errorDetails: "Error"
+        errorDetails: action.error
       });
-    // case ActionTypes.RETRIEVE_USERS_SUCCESS:
-    //   const userOrder = action.order === "first" ? "userInfo_1" : "userInfo_2";
-    //   return Object.assign({}, state, {
-    //     isFetching: false,
-    //     [userOrder]: action.payload
-    //   });
+    case FETCH_DATA_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        dataOutput: action.response
+      });
+
     default:
       return state;
   }
 }
 
 const rootReducer = combineReducers({
-  messages: messages
+  users: users
 });
 
 export default rootReducer;
