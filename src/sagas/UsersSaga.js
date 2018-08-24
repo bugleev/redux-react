@@ -5,7 +5,6 @@ import * as urls from "../configs/enviroment";
 import {
   FETCH_USER,
   POST_USER,
-  retrieveFetchStart,
   retrieveFetchSuccess,
   retrieveFetchError
 } from "../actions";
@@ -13,7 +12,7 @@ import {
 export function* watchFetchUsersSaga() {
   yield [takeEvery(FETCH_USER, fetchUsers)];
 }
-export function* watchaddUsersSaga() {
+export function* watchAddUsersSaga() {
   yield [takeEvery(POST_USER, addUser)];
 }
 
@@ -28,7 +27,6 @@ function* addUser(passedData) {
     },
     body: JSON.stringify(passedData.data)
   });
-  yield put(retrieveFetchStart());
   try {
     const response = yield call(fetch, request);
     if (response.status !== 201 && response.status !== 200) {
@@ -41,9 +39,8 @@ function* addUser(passedData) {
   }
 }
 
-function* fetchUsers(URL_order) {
+function* fetchUsers() {
   const URL = `${urls.PROJECT_URL}/users`;
-  yield put(retrieveFetchStart());
   let request = new Request(URL, {
     method: "GET"
   });
@@ -53,7 +50,7 @@ function* fetchUsers(URL_order) {
       throw new Error(response.status);
     }
     const data = yield apply(response, response.json);
-    yield put(retrieveFetchSuccess(data, URL_order));
+    yield put(retrieveFetchSuccess(data));
   } catch (error) {
     yield put(retrieveFetchError(`${error}`));
   }

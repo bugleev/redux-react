@@ -8,22 +8,26 @@ import { beautifyJSON } from "../../utils/beautifyJSON";
 import InputForm from "./inputForm";
 import GetMethod from "./GetMethod";
 import Spinner from "../Spinner";
+import InputForm_2 from "../inputForm_2";
 
 class DevPanel extends React.Component {
-  state = {};
-
   componentDidMount() {
-    window.scroll(0, 0);
     console.log(process.env);
   }
   componentDidUpdate() {
-    let { dataOutput } = this.props;
-    dataOutput = beautifyJSON(JSON.stringify(dataOutput, null, 4));
-    document.querySelector("pre").innerHTML = dataOutput;
+    if (this.props.dataOutput) {
+      let { dataOutput } = this.props;
+      dataOutput = beautifyJSON(JSON.stringify(dataOutput, null, 4));
+      document.querySelector("pre").innerHTML = dataOutput;
+    }
   }
   handleFetchUsers = () => {
     const { retrieveUsers } = this.props;
     retrieveUsers();
+  };
+  handleFetchPosts = () => {
+    const { retrievePosts } = this.props;
+    retrievePosts();
   };
   handleAddUser = data => {
     const { addUser } = this.props;
@@ -44,6 +48,11 @@ class DevPanel extends React.Component {
               method={this.handleFetchUsers}
             />
             <InputForm id="2" label="Add User" method={this.handleAddUser} />
+            <InputForm_2
+              id="3"
+              label="Add User"
+              method={this.handleFetchPosts}
+            />
           </div>
         </div>
         <div className="state-wrapper">
@@ -61,7 +70,7 @@ class DevPanel extends React.Component {
           </div>
         </div>
         <div className="output-wrapper">
-          <h4>Request Output</h4>
+          <h4>Response Output</h4>
           <div className="output-body">
             <pre />
           </div>
@@ -78,9 +87,9 @@ DevPanel.propTypes = {
 
 // Map Redux state to props
 function mapStateToProps(state) {
-  const { users } = state;
+  const { users, fetchStatus } = state;
   return {
-    isFetching: users.isFetching,
+    isFetching: fetchStatus.isFetching,
     errorDetails: users.errorDetails,
     dataOutput: users.dataOutput
   };

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-class InputForm extends React.Component {
+class InputForm_2 extends React.Component {
   state = {
     name: "",
     firstName: "",
@@ -62,11 +62,11 @@ class InputForm extends React.Component {
   }
 }
 function mapStateToProps(state) {
-  const { users } = state;
+  const { posts } = state;
   return {
-    errorDetails: users.errorDetails,
-    dataOutput: users.dataOutput
+    errorDetails: posts.errorDetails,
+    dataOutput: posts.dataOutput
   };
 }
 
-export default connect(mapStateToProps)(InputForm);
+export default connect(mapStateToProps)(InputForm_2);
