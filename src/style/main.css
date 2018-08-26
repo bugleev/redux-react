@@ -113,10 +113,25 @@ hr {
 .input-form {
   display: flex;
   flex-direction: column; }
+  .input-form input.invalid {
+    background-color: #e99c9c; }
   .input-form > div {
     display: flex;
     justify-content: space-between;
     align-items: center; }
+  .input-form button:disabled {
+    cursor: not-allowed; }
+  .input-form .input-wrapper {
+    position: relative; }
+  .input-form .input__helper-text {
+    display: none;
+    position: absolute;
+    right: 5px;
+    top: -10px;
+    text-transform: lowercase;
+    color: #e99c9c;
+    font-size: 0.8rem;
+    font-family: cursive; }
 
 header {
   background-color: #fbfbfb; }

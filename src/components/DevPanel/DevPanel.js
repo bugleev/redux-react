@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 import * as ProjectActions from "../../actions";
 import { bindActionCreators } from "redux";
 import { beautifyJSON } from "../../utils/beautifyJSON";
-import InputForm from "./inputForm";
+import ReactForm from "../custom/ReactForm";
 import GetMethod from "./GetMethod";
-import Spinner from "../Spinner";
+import Spinner from "../custom/Spinner";
 import InputForm_2 from "../inputForm_2";
 
 class DevPanel extends React.Component {
@@ -47,7 +47,7 @@ class DevPanel extends React.Component {
               label="Get Users"
               method={this.handleFetchUsers}
             />
-            <InputForm id="2" label="Add User" method={this.handleAddUser} />
+            <ReactForm id="2" label="Add User" method={this.handleAddUser} />
             <InputForm_2
               id="3"
               label="Add User"
