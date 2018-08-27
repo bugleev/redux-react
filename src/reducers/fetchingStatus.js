@@ -1,5 +1,5 @@
 import { FETCH_DATA_START, FETCH_DATA_STOP } from "../actions";
-import { createReducer } from "../utils/createReducer";
+import { createReducer } from "../utils";
 
 export const fetchStatus = createReducer(
   {},

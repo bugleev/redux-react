@@ -12,4 +12,6 @@ RUN npm run build REACT_APP_TMS_API_URL=$REACT_APP_TMS_API_URL
 # production environment
 FROM nginx:1.13.9-alpine as deploy
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+RUN rm -frv /usr/share/nginx/html/static/css/*.map
+RUN rm -frv /usr/share/nginx/html/static/js/*.map
 CMD ["nginx", "-g", "daemon off;"]

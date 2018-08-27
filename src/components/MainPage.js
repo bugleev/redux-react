@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 import * as ProjectActions from "../actions";
-import { bindActionCreators } from "redux";
 
 class MainPage extends React.Component {
   componentDidMount() {

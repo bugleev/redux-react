@@ -1,54 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Button, Label } from "semantic-ui-react";
 
 import ReactInput from "./ReactInput";
 import { checkValidity } from "../../utils";
 
-class ReactForm extends React.Component {
+export default class ReactForm extends React.Component {
   state = {
-    orderForm: {
-      name: {
-        elementType: "input",
-        elementConfig: {
-          type: "text",
-          placeholder: ""
-        },
-        value: "",
-        validation: {
-          required: true,
-          minLength: 3
-        },
-        valid: false,
-        touched: false
-      },
-      firstName: {
-        elementType: "input",
-        elementConfig: {
-          type: "text",
-          placeholder: ""
-        },
-        value: "",
-        validation: {
-          required: true
-        },
-        valid: false,
-        touched: false
-      },
-      lastName: {
-        elementType: "input",
-        elementConfig: {
-          type: "text",
-          placeholder: ""
-        },
-        value: "",
-        validation: {
-          required: true,
-          minLength: 3
-        },
-        valid: false,
-        touched: false
-      }
-    },
+    orderForm: this.props.formSource,
     formIsValid: false
   };
   handleInputChange = (event, inputIdentifier) => {
@@ -111,18 +70,18 @@ class ReactForm extends React.Component {
             method={event => this.handleInputChange(event, formElement.id)}
           />
         ))}
-        <button disabled={false}>submit</button>
+        <Button secondary size="tiny" disabled={false}>
+          Submit
+        </Button>
       </form>
     );
     return (
       <div className="input-item">
-        <span>
+        <Label>
           {this.props.id}. {this.props.label}
-        </span>
-        {form} <hr />
+        </Label>
+        {form}
       </div>
     );
   }
 }
-
-export default ReactForm;

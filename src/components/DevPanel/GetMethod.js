@@ -1,13 +1,15 @@
 import React from "react";
+import { Button, Label } from "semantic-ui-react";
 
 export default props => {
   return (
     <div className="control-item">
-      <span>
+      <Label>
         {props.id}. {props.label}
-      </span>
-      <button onClick={props.method}>Method BTN</button>
-      <hr />
+      </Label>
+      <Button secondary size="small" onClick={props.method}>
+        {props.buttonText}
+      </Button>
     </div>
   );
 };

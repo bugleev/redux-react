@@ -6,7 +6,8 @@ import {
   FETCH_USER,
   POST_USER,
   retrieveFetchSuccess,
-  retrieveFetchError
+  retrieveFetchError,
+  clearFetchError
 } from "../actions";
 
 export function* watchFetchUsersSaga() {
@@ -18,6 +19,7 @@ export function* watchAddUsersSaga() {
 
 function* addUser(passedData) {
   //const URL = `${urls.PROJECT_URL}/createUser`;
+  yield put(clearFetchError());
   const URL = `${urls.PROJECT_URL}/posts`;
   let request = new Request(URL, {
     method: "POST",
@@ -40,6 +42,7 @@ function* addUser(passedData) {
 }
 
 function* fetchUsers() {
+  yield put(clearFetchError());
   const URL = `${urls.PROJECT_URL}/users`;
   let request = new Request(URL, {
     method: "GET"

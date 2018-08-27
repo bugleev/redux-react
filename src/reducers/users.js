@@ -1,9 +1,18 @@
-import { FETCH_DATA_ERROR, FETCH_DATA_SUCCESS } from "../actions";
-import { createReducer } from "../utils/createReducer";
+import {
+  FETCH_DATA_ERROR,
+  FETCH_DATA_SUCCESS,
+  CLEAR_FETCH_DATA_ERROR
+} from "../actions";
+import { createReducer } from "../utils";
 
 export const users = createReducer(
   {},
   {
+    [CLEAR_FETCH_DATA_ERROR](state) {
+      return Object.assign({}, state, {
+        errorDetails: ""
+      });
+    },
     [FETCH_DATA_ERROR](state, { error }) {
       return Object.assign({}, state, {
         errorDetails: error

@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Segment } from "semantic-ui-react";
 
 import * as ProjectActions from "../../actions";
-import { bindActionCreators } from "redux";
-import { beautifyJSON } from "../../utils/beautifyJSON";
-import ReactForm from "../custom/ReactForm";
+import { beautifyJSON, formModelCreator } from "../../utils";
+import FormGenerated from "../custom/FormGenerator";
 import GetMethod from "./GetMethod";
 import Spinner from "../custom/Spinner";
-import InputForm_2 from "../inputForm_2";
 
 class DevPanel extends React.Component {
   componentDidMount() {
@@ -36,23 +36,34 @@ class DevPanel extends React.Component {
 
   render() {
     let { isFetching, errorDetails } = this.props;
+    const userModel = {
+      id: 0,
+      firstName: "string",
+      lastName: "string",
+      name: "string"
+    };
 
     return (
       <div className="dev-wrapper">
         <div className="controls-wrapper">
           <div>
             <h4>API Methods</h4>
-            <GetMethod
-              id="1"
-              label="Get Users"
-              method={this.handleFetchUsers}
-            />
-            <ReactForm id="2" label="Add User" method={this.handleAddUser} />
-            <InputForm_2
-              id="3"
-              label="Add User"
-              method={this.handleFetchPosts}
-            />
+            <Segment>
+              <GetMethod
+                id="1"
+                label="Get Users"
+                method={this.handleFetchUsers}
+                buttonText="Make request"
+              />
+            </Segment>
+            <Segment>
+              <FormGenerated
+                formSource={formModelCreator(userModel)}
+                id="2"
+                label="Add User"
+                method={this.handleAddUser}
+              />
+            </Segment>
           </div>
         </div>
         <div className="state-wrapper">
@@ -63,10 +74,13 @@ class DevPanel extends React.Component {
               {isFetching ? <Spinner /> : null}
             </div>
           </div>
-          <h4>Error Status</h4>
-          <div className="error-wrapper" />
-          <div className="error-body">
-            <p>{errorDetails ? errorDetails : null}</p>
+          <div className="error-wrapper">
+            <h4>Error Status</h4>
+            <div className="error-body">
+              <p className="error-status__text">
+                {errorDetails ? errorDetails : null}
+              </p>
+            </div>
           </div>
         </div>
         <div className="output-wrapper">

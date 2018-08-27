@@ -1,4 +1,5 @@
 import React from "react";
+import { Input } from "semantic-ui-react";
 
 const input = props => {
   let inputElement = null;
@@ -11,11 +12,13 @@ const input = props => {
   switch (props.elementType) {
     case "input":
       inputElement = (
-        <input
+        <Input
+          size="small"
           className={inputClasses.join(" ")}
           {...props.elementConfig}
           value={props.value}
           onChange={props.method}
+          error={props.touched && props.invalid}
         />
       );
       break;
@@ -46,7 +49,7 @@ const input = props => {
       break;
     default:
       inputElement = (
-        <input
+        <Input
           className={inputClasses.join(" ")}
           {...props.elementConfig}
           value={props.value}

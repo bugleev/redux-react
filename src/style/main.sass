@@ -1,17 +1,24 @@
 @import '_variables.sass'
-
+*
+  box-sizing: border-box
 body 
-  height: 100vh
+  height: 96vh
   margin: 0
   background-color: #fefefe
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-
-.container
-  min-width: 1080px  
-  padding: 0 1rem
-  margin: 0 auto
+  overflow: auto
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important 
+#root
+  height: 100%
+.app-container
+  min-width: 1080px    
+  height: 100%
+  margin: 1rem
+  margin-top: 4rem
+  padding-bottom: 1rem
   display: flex 
   flex-direction: column
+  background-color: #e5e5e5
+  box-shadow: $elevation_2 
   h1
     text-align: center
 hr 
@@ -24,18 +31,18 @@ hr
 
 .dev-wrapper 
   display: flex
-  background-color: #e5e5e5 
-  height: 700px
-  box-shadow: $elevation_2 
+  background-color: #e5e5e5  
+  height: 100%
   >div
     padding: 1rem
     h4
       text-align: center
+  +mq("tablet-wide", "max")
+    
 .main-wrapper  
   display: flex
   background-color: #e5e5e5 
-  min-height: 700px
-  box-shadow: $elevation_2
+  min-height: 700px 
   justify-content: center
   align-items: center 
   h4
@@ -47,13 +54,13 @@ hr
   min-width: 350px 
   display: flex
   flex-direction: column
-  overflow: auto
+  overflow-y: auto
   .control-item
     display: flex
     text-align: left
     flex-direction: column
     button
-      margin: 0.5rem 0
+      margin: 1rem auto 0
       width: 50%
     span      
       letter-spacing: -1px
@@ -63,32 +70,38 @@ hr
     text-align: left
     flex-direction: column
     margin: 0.5rem 0
-    input
-      margin: 0.5rem 0
-      width: 50%
+    
     span      
       letter-spacing: -1px
       text-transform: uppercase  
 
 .state-wrapper
-  background-color: #fcfef1
   flex-basis: 250px
   min-width: 250px
+  height: 100%
  
-.request-body
-  height: 200px
+.request-wrapper,
+.error-wrapper
+  height: 35%
+  margin-bottom: 2rem    
+.request-body,
+.error-body
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  background-color: #fcfef1
+  height: 80%
   text-align: center 
   font-size: 1.5rem
-.error-body
-  color: red   
-  font-size: 1.5rem
-  text-align: center
-
-  
+.error-status__text
+  color:  #d60606
 .output-wrapper
   background-color: #e5e5e5
-  flex-grow: 1  
+  flex-grow: 1
+  height: 100%  
   .output-body
+    height: calc(100% - 45px)
     padding: 0.8rem    
     font-size: 0.9rem
     box-shadow: inset 2px 2px 18px -6px rgba(0,0,0,0.35), inset -2px -2px 18px -6px rgba(0,0,0,0.35)
@@ -96,9 +109,9 @@ hr
     width: 80%    
     margin: 0 auto
     pre 
+      height: 100%      
       padding: 5px
       margin: 5px
-      height: 500px      
       overflow-y: auto
       .string
         color: green
@@ -122,7 +135,11 @@ hr
   button:disabled
     cursor: not-allowed
   .input-wrapper
-    position: relative    
+    position: relative
+    input   
+      margin: 0.5rem 0
+      width: 50%     
+         
   .input__helper-text
     display: none
     position: absolute
@@ -133,7 +150,7 @@ hr
     font-size: 0.8rem
     font-family: cursive      
 header  
-  background-color: #fbfbfb  
+  
 .links-wrapper
   padding: 1rem
   display: flex
@@ -145,3 +162,7 @@ header
   a.active button
     background-color: #7878ad
     border: none   
+.datepicker-wrapper
+  padding: 0.8rem
+input::placeholder
+  color: grey
