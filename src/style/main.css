@@ -1,12 +1,42 @@
+.ui.inverted.menu {
+  background: #353535; }
+
+.ui.primary.button, .ui.primary.buttons .button {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-color: #BADA55;
+  color: #353535; }
+  .ui.primary.button:hover, .ui.primary.button:focus, .ui.primary.buttons .button:hover, .ui.primary.buttons .button:focus {
+    background-color: #c2ea45;
+    color: #353535; }
+
 * {
   box-sizing: border-box; }
+
+@font-face {
+  font-family: 'utkonos';
+  font-style: normal;
+  font-weight: 400;
+  src: local("utkonos"), local("utkonos-regular"), url(../assets/fonts/Utkonos-Regular.woff2) format("woff2"); }
+
+@font-face {
+  font-family: 'utkonos';
+  font-style: normal;
+  font-weight: 700;
+  src: local("utkonos"), local("utkonos-bold"), url(../assets/fonts/Utkonos-Bold.woff2) format("woff2"); }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none; }
 
 body {
   height: 96vh;
   margin: 0;
   background-color: #fefefe;
   overflow: auto;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; }
+  font-family: "utkonos", Helvetica, Arial, sans-serif !important; }
+  @media only screen and (max-width: 1023px) {
+    body {
+      height: 100%; } }
 
 #root {
   height: 100%; }
@@ -21,6 +51,10 @@ body {
   flex-direction: column;
   background-color: #e5e5e5;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+  @media only screen and (max-width: 1023px) {
+    .app-container {
+      min-width: auto;
+      height: auto; } }
   .app-container h1 {
     text-align: center; }
 
@@ -31,13 +65,18 @@ hr {
   height: 1px; }
 
 .dev-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 350px 1fr 2fr;
   background-color: #e5e5e5;
   height: 100%; }
   .dev-wrapper > div {
     padding: 1rem; }
     .dev-wrapper > div h4 {
       text-align: center; }
+  @media only screen and (max-width: 1023px) {
+    .dev-wrapper {
+      grid-template-columns: 350px 1fr;
+      grid-template-rows: 500px; } }
 
 .main-wrapper {
   display: flex;
@@ -78,7 +117,8 @@ hr {
 .state-wrapper {
   flex-basis: 250px;
   min-width: 250px;
-  height: 100%; }
+  height: 100%;
+  background-color: #e5e5e5; }
 
 .request-wrapper,
 .error-wrapper {
@@ -102,15 +142,19 @@ hr {
 .output-wrapper {
   background-color: #e5e5e5;
   flex-grow: 1;
-  height: 100%; }
+  height: 100%;
+  max-height: 800px; }
+  @media only screen and (max-width: 1023px) {
+    .output-wrapper {
+      max-height: 600px;
+      grid-column: span 2; } }
   .output-wrapper .output-body {
     height: calc(100% - 45px);
     padding: 0.8rem;
     font-size: 0.9rem;
     box-shadow: inset 2px 2px 18px -6px rgba(0, 0, 0, 0.35), inset -2px -2px 18px -6px rgba(0, 0, 0, 0.35);
     background-color: #f3e6b8;
-    width: 80%;
-    margin: 0 auto; }
+    width: 100%; }
     .output-wrapper .output-body pre {
       height: 100%;
       padding: 5px;

@@ -9,9 +9,13 @@ export const users = createReducer(
   {},
   {
     [CLEAR_FETCH_DATA_ERROR](state) {
-      return Object.assign({}, state, {
-        errorDetails: ""
-      });
+      if (state.errorDetails && state.errorDetails.length) {
+        return Object.assign({}, state, {
+          errorDetails: ""
+        });
+      } else {
+        return state;
+      }
     },
     [FETCH_DATA_ERROR](state, { error }) {
       return Object.assign({}, state, {

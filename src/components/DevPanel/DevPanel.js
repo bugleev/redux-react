@@ -4,117 +4,107 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Segment } from "semantic-ui-react";
 
-import * as ProjectActions from "../../actions";
-import { beautifyJSON, formModelCreator } from "../../utils";
+import { retrieveUsers, addUser } from "../../actions";
+import { formModelCreator } from "../../utils";
 import FormGenerated from "../custom/FormGenerator";
-import GetMethod from "./GetMethod";
-import Spinner from "../custom/Spinner";
+import MethodGenerated from "../custom/MethodGenerator";
+import RequestStatus from "./RequestStatus";
+import ErrorStatus from "./ErrorStatus";
+import OutputWrapper from "./OutputWrapper";
+
+const userModel = {
+  id: 0,
+  firstName: "string",
+  lastName: "string",
+  name: "string",
+  method: { method_name: "API_POST_handleAddUser", method_label: "Add user" }
+};
 
 class DevPanel extends React.Component {
-  componentDidMount() {
-    console.log(process.env);
+  constructor() {
+    super();
+    this.state = {
+      forms: this.createFormsFromModels(),
+      methods: this.createComponentsFromMethods()
+    };
   }
-  componentDidUpdate() {
-    if (this.props.dataOutput) {
-      let { dataOutput } = this.props;
-      dataOutput = beautifyJSON(JSON.stringify(dataOutput, null, 4));
-      document.querySelector("pre").innerHTML = dataOutput;
+
+  componentDidMount() {}
+
+  createComponentsFromMethods = () => {
+    const methods = [];
+    for (let key in this) {
+      if (key.slice(0, 8) === "API_GET_") {
+        methods.push({ method: key, label: this[key]("GET_LABEL") });
+      }
     }
-  }
-  handleFetchUsers = () => {
-    const { retrieveUsers } = this.props;
-    retrieveUsers();
+    return methods;
   };
-  handleFetchPosts = () => {
-    const { retrievePosts } = this.props;
-    retrievePosts();
+  createFormsFromModels = () => {
+    const formModelsArr = [];
+    formModelsArr.push(
+      Object.assign(formModelCreator(userModel), userModel.method)
+    );
+    return formModelsArr;
   };
-  handleAddUser = data => {
-    const { addUser } = this.props;
-    addUser(data);
+
+  API_GET_handleFetchUsers = arg => {
+    if (arg === "GET_LABEL") return "Get user";
+    this.props.retrieveUsers();
+  };
+  API_POST_handleAddUser = data => {
+    this.props.addUser(data);
   };
 
   render() {
-    let { isFetching, errorDetails } = this.props;
-    const userModel = {
-      id: 0,
-      firstName: "string",
-      lastName: "string",
-      name: "string"
-    };
-
     return (
       <div className="dev-wrapper">
         <div className="controls-wrapper">
           <div>
             <h4>API Methods</h4>
-            <Segment>
-              <GetMethod
-                id="1"
-                label="Get Users"
-                method={this.handleFetchUsers}
-                buttonText="Make request"
-              />
-            </Segment>
-            <Segment>
-              <FormGenerated
-                formSource={formModelCreator(userModel)}
-                id="2"
-                label="Add User"
-                method={this.handleAddUser}
-              />
-            </Segment>
+            {this.state.methods.map((item, id) => (
+              <Segment key={item.method}>
+                <MethodGenerated
+                  id={id + 1}
+                  label={item.label}
+                  method={this[item.method]}
+                  buttonText="Make request"
+                />
+              </Segment>
+            ))}
+            {this.state.forms.map((item, id) => (
+              <Segment key={item}>
+                <FormGenerated
+                  formSource={item}
+                  id={this.state.methods.length + 1 + id}
+                  label={item.method_label}
+                  method={this[item.method_name]}
+                />
+              </Segment>
+            ))}
           </div>
         </div>
         <div className="state-wrapper">
-          <div className="request-wrapper">
-            <h4>Request Status</h4>
-            <div className="request-body">
-              <p>{isFetching ? "loading" : null}</p>
-              {isFetching ? <Spinner /> : null}
-            </div>
-          </div>
-          <div className="error-wrapper">
-            <h4>Error Status</h4>
-            <div className="error-body">
-              <p className="error-status__text">
-                {errorDetails ? errorDetails : null}
-              </p>
-            </div>
-          </div>
+          <RequestStatus />
+          <ErrorStatus />
         </div>
         <div className="output-wrapper">
-          <h4>Response Output</h4>
-          <div className="output-body">
-            <pre />
-          </div>
+          <OutputWrapper />
         </div>
       </div>
     );
   }
 }
 
-// Set state and action as proptype
 DevPanel.propTypes = {
-  message: PropTypes.string
+  retrieveUsers: PropTypes.func,
+  addUser: PropTypes.func
 };
 
-// Map Redux state to props
-function mapStateToProps(state) {
-  const { users, fetchStatus } = state;
-  return {
-    isFetching: fetchStatus.isFetching,
-    errorDetails: users.errorDetails,
-    dataOutput: users.dataOutput
-  };
-}
-
-// Map action to props
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Object.assign({}, ProjectActions), dispatch);
-}
+const MapDispatchToProps = dispatch =>
+  bindActionCreators({ ...{ retrieveUsers, addUser } }, dispatch);
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  null,
+  MapDispatchToProps
 )(DevPanel);

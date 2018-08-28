@@ -1,15 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 
-import * as ProjectActions from "../actions";
-
-class MainPage extends React.Component {
-  componentDidMount() {
-    console.log(process.env);
-  }
-
+export default class MainPage extends React.Component {
   render() {
     return (
       <div className="main-wrapper">
@@ -20,28 +11,3 @@ class MainPage extends React.Component {
     );
   }
 }
-
-// Set state and action as proptype
-MainPage.propTypes = {
-  message: PropTypes.string
-};
-
-// Map Redux state to props
-function mapStateToProps(state) {
-  const { users } = state;
-  return {
-    isFetching: users.isFetching,
-    errorDetails: users.errorDetails,
-    dataOutput: users.dataOutput
-  };
-}
-
-// Map action to props
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Object.assign({}, ProjectActions), dispatch);
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MainPage);

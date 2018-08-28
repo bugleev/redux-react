@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { checkValidity } from "./checkValidity";
-import ReactInput from "./ReactInput";
+import ReactInput from "../custom/ReactInput";
 
 class ReactForm extends Component {
   state = {
@@ -100,11 +100,6 @@ class ReactForm extends Component {
         formElementIdentifier
       ].value;
     }
-    const order = {
-      ingredients: this.props.ingredients,
-      price: this.props.price,
-      orderData: formData
-    };
   };
 
   inputChangedHandler = (event, inputIdentifier) => {

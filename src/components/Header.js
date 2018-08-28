@@ -21,17 +21,18 @@ export default class Header extends Component {
                 active={activeItem === "Main App"}
                 onClick={this.handleItemClick}
               >
-                Main App
+                <span>Main App</span>
               </Menu.Item>
             </NavLink>
             <NavLink exact to="/devpanel">
               <Menu.Item
                 as="div"
+                header
                 name="Dev Panel"
                 active={activeItem === "Dev Panel"}
                 onClick={this.handleItemClick}
               >
-                <span style={{ marginRight: "5px" }}>Dev Panel</span>
+                <span>Dev Panel</span>
               </Menu.Item>
             </NavLink>
           </Container>

@@ -35,9 +35,11 @@ export default class ReactForm extends React.Component {
     e.preventDefault();
     const formData = {};
     for (let formElementIdentifier in this.state.orderForm) {
-      formData[formElementIdentifier] = this.state.orderForm[
-        formElementIdentifier
-      ].value;
+      if (formElementIdentifier.slice(0, 7) !== "method_") {
+        formData[formElementIdentifier] = this.state.orderForm[
+          formElementIdentifier
+        ].value;
+      }
     }
     this.props.method(formData);
   };
@@ -49,10 +51,12 @@ export default class ReactForm extends React.Component {
   render() {
     const formElementsArray = [];
     for (let key in this.state.orderForm) {
-      formElementsArray.push({
-        id: key,
-        config: this.state.orderForm[key]
-      });
+      if (key.slice(0, 7) !== "method_") {
+        formElementsArray.push({
+          id: key,
+          config: this.state.orderForm[key]
+        });
+      }
     }
     let form = (
       <form onSubmit={this.handleSubmit} className="input-form">
@@ -70,7 +74,7 @@ export default class ReactForm extends React.Component {
             method={event => this.handleInputChange(event, formElement.id)}
           />
         ))}
-        <Button secondary size="tiny" disabled={false}>
+        <Button primary size="tiny" disabled={false}>
           Submit
         </Button>
       </form>
@@ -85,3 +89,9 @@ export default class ReactForm extends React.Component {
     );
   }
 }
+ReactForm.propTypes = {
+  formSource: PropTypes.object,
+  id: PropTypes.number,
+  label: PropTypes.string,
+  method: PropTypes.func
+};

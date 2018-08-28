@@ -1,12 +1,36 @@
 @import '_variables.sass'
+@import 'semantic_overrides.sass'
+
 *
   box-sizing: border-box
+@font-face
+  font-family: 'utkonos'
+  font-style: normal
+  font-weight: 400
+  src: local('utkonos'), local('utkonos-regular'), url(../assets/fonts/Utkonos-Regular.woff2) format('woff2')   
+@font-face
+  font-family: 'utkonos'
+  font-style: normal
+  font-weight: 700
+  src: local('utkonos'), local('utkonos-bold'), url(../assets/fonts/Utkonos-Bold.woff2) format('woff2')   
+
+
+input[type='number']
+  -moz-appearance:textfield
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+  -webkit-appearance: none
+
 body 
   height: 96vh
   margin: 0
   background-color: #fefefe
   overflow: auto
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important 
+  font-family: "utkonos", Helvetica, Arial, sans-serif !important
+  +mq("tablet-wide", "max")
+    height: 100% 
+
 #root
   height: 100%
 .app-container
@@ -18,7 +42,10 @@ body
   display: flex 
   flex-direction: column
   background-color: #e5e5e5
-  box-shadow: $elevation_2 
+  box-shadow: $elevation_2
+  +mq("tablet-wide", "max")
+    min-width: auto
+    height: auto
   h1
     text-align: center
 hr 
@@ -30,7 +57,8 @@ hr
   height: 1px
 
 .dev-wrapper 
-  display: flex
+  display: grid
+  grid-template-columns: 350px 1fr 2fr
   background-color: #e5e5e5  
   height: 100%
   >div
@@ -38,7 +66,8 @@ hr
     h4
       text-align: center
   +mq("tablet-wide", "max")
-    
+    grid-template-columns: 350px 1fr
+    grid-template-rows: 500px
 .main-wrapper  
   display: flex
   background-color: #e5e5e5 
@@ -69,8 +98,7 @@ hr
     display: flex
     text-align: left
     flex-direction: column
-    margin: 0.5rem 0
-    
+    margin: 0.5rem 0        
     span      
       letter-spacing: -1px
       text-transform: uppercase  
@@ -79,6 +107,7 @@ hr
   flex-basis: 250px
   min-width: 250px
   height: 100%
+  background-color: #e5e5e5 
  
 .request-wrapper,
 .error-wrapper
@@ -86,7 +115,7 @@ hr
   margin-bottom: 2rem    
 .request-body,
 .error-body
-  display: flex
+  display: flex  
   align-items: center
   justify-content: center
   flex-direction: column
@@ -100,14 +129,17 @@ hr
   background-color: #e5e5e5
   flex-grow: 1
   height: 100%  
+  max-height: 800px
+  +mq("tablet-wide", "max")
+    max-height: 600px
+    grid-column: span 2
   .output-body
     height: calc(100% - 45px)
     padding: 0.8rem    
     font-size: 0.9rem
     box-shadow: inset 2px 2px 18px -6px rgba(0,0,0,0.35), inset -2px -2px 18px -6px rgba(0,0,0,0.35)
     background-color: #f3e6b8
-    width: 80%    
-    margin: 0 auto
+    width: 100%        
     pre 
       height: 100%      
       padding: 5px
@@ -148,9 +180,8 @@ hr
     text-transform: lowercase
     color: #e99c9c
     font-size: 0.8rem
-    font-family: cursive      
-header  
-  
+    font-family: cursive     
+
 .links-wrapper
   padding: 1rem
   display: flex
@@ -162,6 +193,7 @@ header
   a.active button
     background-color: #7878ad
     border: none   
+
 .datepicker-wrapper
   padding: 0.8rem
 input::placeholder

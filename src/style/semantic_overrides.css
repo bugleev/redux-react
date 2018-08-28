@@ -1,0 +1,10 @@
+.ui.inverted.menu {
+  background: #353535; }
+
+.ui.primary.button, .ui.primary.buttons .button {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-color: #BADA55;
+  color: #353535; }
+  .ui.primary.button:hover, .ui.primary.button:focus, .ui.primary.buttons .button:hover, .ui.primary.buttons .button:focus {
+    background-color: #c2ea45;
+    color: #353535; }

@@ -7,7 +7,7 @@ export default props => {
       <Label>
         {props.id}. {props.label}
       </Label>
-      <Button secondary size="small" onClick={props.method}>
+      <Button primary size="small" onClick={props.method}>
         {props.buttonText}
       </Button>
     </div>

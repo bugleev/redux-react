@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-import ReactInput from "./ReactInput";
+import ReactInput from "../custom/ReactInput";
 import { checkValidity } from "../../utils";
 
 class ReactForm extends React.Component {
