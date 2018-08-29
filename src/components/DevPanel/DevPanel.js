@@ -13,7 +13,6 @@ import ErrorStatus from "./ErrorStatus";
 import OutputWrapper from "./OutputWrapper";
 
 const userModel = {
-  id: 0,
   firstName: "string",
   lastName: "string",
   name: "string",

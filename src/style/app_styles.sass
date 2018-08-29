@@ -1,0 +1,70 @@
+@import '_variables.sass'
+
+
+.app-container  
+  height: 1000px
+  display: grid
+  grid-template-columns: 80px 1fr
+  grid-template-rows: 85px 1fr
+
+.app-sideframe
+  background-color: #38925c
+  grid-row:  span 2
+  display: grid
+  padding-top: 3rem
+  padding-bottom: 3rem
+  justify-items: center
+  align-content: space-between
+  color: #fff
+.app-sideframe__content
+
+
+
+.sideframe__logo-wrapper
+  margin-bottom: 4rem
+.sideframe__links-wrapper__link
+  margin: 1rem auto
+
+
+.app-addressframe
+  border-bottom: 1px solid #e2e2e2
+  display: grid
+  padding: 1rem 1rem 1rem 2.5rem
+  grid-template-columns: auto 1fr
+  align-content: center
+  justify-content: space-between  
+  .addressframe__module-name
+    font-weight: bold
+    font-size: 1.7rem
+    text-align: left
+    >span
+      vertical-align: middle
+  .addressframe__address-bar
+    padding-left: 2rem
+    text-align: left
+    span
+      vertical-align: sub
+    .address-bar__link
+      padding: 0.5rem
+
+
+.app-module__wrapper
+  width: 100%
+  display: grid
+  grid-template-columns: 230px 1fr
+  .app-module__options
+    border-right: 1px solid #e2e2e2
+    padding: 3rem 2rem
+    text-align: center
+    display: grid
+    align-content: flex-start
+    grid-gap: 1rem
+    text-align: left
+
+    
+
+  .app-module__body
+    display: grid
+    align-content: center
+    justify-content: center  
+  

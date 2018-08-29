@@ -9,18 +9,15 @@ import "../style/react_dates_overrides.css";
 
 import MainPage from "../components/MainPage";
 import DevPanel from "../components/DevPanel/DevPanel";
-import Header from "../components/Header";
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="app-container">
-          <Header />
-          <Route exact path="/" render={() => <Redirect to="/devpanel" />} />
-          <Route exact path="/mainapp" component={MainPage} />
-          <Route exact path="/devpanel" component={DevPanel} />
-        </div>
+        <React.Fragment>
+          <Route path="/" component={MainPage} />
+          {/* <Route path="/devpanel" component={DevPanel} /> */}
+        </React.Fragment>
       </Router>
     );
   }
