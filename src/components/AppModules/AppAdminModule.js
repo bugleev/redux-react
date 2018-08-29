@@ -3,14 +3,15 @@ import ModuleOptionsFrame from "./ModuleOptionsFrame";
 
 export default class AppAdminModule extends Component {
   render() {
+    const { match } = this.props;
     const moduleOptions = [
       {
         name: "Настройки доставки",
-        path: "/delivery"
+        path: `${match.url}/delivery`
       },
       {
         name: "Управление аккаунтом",
-        path: "/account"
+        path: `${match.url}/account`
       },
       {
         name: "Еще настройки",

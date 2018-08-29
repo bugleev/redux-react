@@ -11,14 +11,15 @@ import AppAccountModule from "./AppModules/AppAccountModule";
 export default class MainPage extends React.Component {
   render() {
     const { match } = this.props;
+    let shouldRedirect = match.url === window.location.pathname;
     return (
       <div className="app-container">
         <SideFrame />
         <AddressFrame />
 
-        <Route exact path="/" component={AppAdminModule} />
-        <Route path="/delivery" component={AppDeliveryModule} />
-        <Route path="/account" component={AppAccountModule} />
+        <Route exact path="/dashboard" component={AppAdminModule} />
+        <Route path={`${match.url}/delivery`} component={AppDeliveryModule} />
+        <Route path={`${match.url}/account`} component={AppAccountModule} />
       </div>
     );
   }

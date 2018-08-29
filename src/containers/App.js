@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Redirect } from "react-router";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
@@ -15,7 +15,19 @@ class App extends Component {
     return (
       <Router>
         <React.Fragment>
-          <Route path="/" component={MainPage} />
+          <Route
+            exact
+            strict
+            path="/"
+            render={({ location }) => {
+              if (location.pathname === window.location.pathname) {
+                return <Redirect to="/dashboard" />;
+              }
+              return null;
+            }}
+          />
+          <Route path="/dashboard" component={MainPage} />
+
           {/* <Route path="/devpanel" component={DevPanel} /> */}
         </React.Fragment>
       </Router>

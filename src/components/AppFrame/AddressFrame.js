@@ -7,15 +7,15 @@ class AddressFrame extends Component {
     currentPath: {
       names: [],
       paths: []
-    }
+    },
+    links: []
   };
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props) {
     const path = props.location.pathname;
-    const arr = path.split("/");
+    let arr = path.split("/");
     arr.shift();
-    console.log(arr);
-    const addresses = arr.map(el => {
+    const names = arr.map(el => {
       switch (el) {
         case "delivery":
           return "Настройки доставки";
@@ -29,27 +29,30 @@ class AddressFrame extends Component {
           return null;
       }
     });
-    console.log(addresses);
     let links = [];
     if (arr.length > 1) {
+      arr = arr.reduce((acc, curr) => {
+        links.push(acc + "/" + curr);
+        return acc + "/" + curr;
+      });
     }
     return {
       currentPath: {
-        names: addresses,
+        names: names,
         paths: arr
-      }
+      },
+      links: links
     };
   }
-  componentDidMount() {
-    console.log(this.props.location.pathname, "mount");
-  }
-  componentDidUpdate() {
-    console.log(this.props.location.pathname, "update");
-  }
+  // componentDidMount() {
+  //   console.log(this.props.location.pathname, "mount");
+  // }
+  // componentDidUpdate() {
+  //   console.log(this.props.location.pathname, "update");
+  // }
 
   render() {
-    console.log(this.state.currentPath);
-    const { currentPath } = this.state;
+    const { currentPath, links } = this.state;
     return (
       <div className="app-addressframe">
         <div className="addressframe__module-name">
@@ -60,7 +63,7 @@ class AddressFrame extends Component {
           </span>
         </div>
         <div className="addressframe__address-bar">
-          <NavLink to="/">
+          <NavLink to="/dashboard">
             <span className="address-bar__link">Администрирование</span>
           </NavLink>
           {currentPath.names.map(
@@ -68,7 +71,7 @@ class AddressFrame extends Component {
               el && (
                 <React.Fragment key={el}>
                   <span>></span>
-                  <NavLink to={`/${currentPath.paths[id]}`}>
+                  <NavLink to={`/${links[id - 1]}`}>
                     <span className="address-bar__link">{el}</span>
                   </NavLink>
                 </React.Fragment>
