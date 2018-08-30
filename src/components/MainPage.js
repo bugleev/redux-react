@@ -1,25 +1,32 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Redirect } from "react-router";
+import { Route } from "react-router-dom";
 
-import SideFrame from "./AppFrame/SideFrame";
-import AddressFrame from "./AppFrame/AddressFrame";
+import SideFrame from "./AppModules/Appframe-modules/SideFrame";
+import AddressFrame from "./AppModules/Appframe-modules/AddressFrame";
 import AppAdminModule from "./AppModules/AppAdminModule";
-import AppDeliveryModule from "./AppModules/AppDeliveryModule";
-import AppAccountModule from "./AppModules/AppAccountModule";
 
 export default class MainPage extends React.Component {
+  state = {
+    showOptionsFrame: true
+  };
+
+  toggleOptionsFrame = () => {
+    this.setState({
+      showOptionsFrame: !this.state.showOptionsFrame
+    });
+  };
+
   render() {
-    const { match } = this.props;
-    let shouldRedirect = match.url === window.location.pathname;
     return (
       <div className="app-container">
-        <SideFrame />
+        <SideFrame toggleOptions={this.toggleOptionsFrame} />
         <AddressFrame />
 
-        <Route exact path="/dashboard" component={AppAdminModule} />
-        <Route path={`${match.url}/delivery`} component={AppDeliveryModule} />
-        <Route path={`${match.url}/account`} component={AppAccountModule} />
+        <Route
+          path="/dashboard"
+          component={AppAdminModule}
+          optionsVisible={this.state.showOptionsFrame}
+        />
       </div>
     );
   }

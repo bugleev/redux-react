@@ -10,6 +10,7 @@ export default class OptionsFrame extends Component {
           <NavLink exact to={el.path} key={id}>
             <div className="module-options__option">
               <span>{el.name}</span>
+              <i className="arrow" />
             </div>
           </NavLink>
         ))}

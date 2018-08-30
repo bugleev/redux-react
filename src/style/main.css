@@ -188,10 +188,14 @@ hr {
   height: 1px; }
 
 .app-container {
-  height: 1000px;
+  height: 100vh;
   display: grid;
   grid-template-columns: 80px 1fr;
-  grid-template-rows: 85px 1fr; }
+  grid-template-rows: 85px 1fr;
+  color: #4b5750; }
+  .app-container a {
+    text-decoration: none;
+    color: inherit; }
 
 .app-sideframe {
   background-color: #38925c;
@@ -203,11 +207,53 @@ hr {
   align-content: space-between;
   color: #fff; }
 
+.app-sideframe__user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.sideframe__user-icon {
+  margin-bottom: 1rem; }
+
+.st0 {
+  fill: #d7e9de; }
+
+.dot {
+  height: 4px;
+  width: 4px;
+  background-color: #9bc8ad;
+  border-radius: 50%;
+  margin: 0 1px;
+  display: inline-block; }
+
+.app-sideframe__hide-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  background-color: #4c9d6c;
+  margin-bottom: 2rem;
+  border-radius: 30%; }
+  .app-sideframe__hide-options i.arrow {
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
+    margin-left: 1px;
+    transform: rotate(135deg); }
+
 .sideframe__logo-wrapper {
+  display: flex;
+  text-align: center;
   margin-bottom: 4rem; }
 
 .sideframe__links-wrapper__link {
   margin: 1rem auto; }
+
+.sideframe__user-options {
+  text-align: center; }
 
 .app-addressframe {
   border-bottom: 1px solid #e2e2e2;
@@ -220,15 +266,17 @@ hr {
     font-weight: bold;
     font-size: 1.7rem;
     text-align: left; }
-    .app-addressframe .addressframe__module-name > span {
-      vertical-align: middle; }
   .app-addressframe .addressframe__address-bar {
     padding-left: 2rem;
-    text-align: left; }
-    .app-addressframe .addressframe__address-bar span {
-      vertical-align: sub; }
+    text-align: left;
+    display: flex;
+    align-items: center; }
     .app-addressframe .addressframe__address-bar .address-bar__link {
-      padding: 0.5rem; }
+      padding: 0.5rem;
+      vertical-align: sub; }
+    .app-addressframe .addressframe__address-bar .address-bar__dash {
+      padding-top: 7px;
+      vertical-align: sub; }
 
 .app-module__wrapper {
   width: 100%;
@@ -242,7 +290,98 @@ hr {
     align-content: flex-start;
     grid-gap: 1rem;
     text-align: left; }
+    .app-module__wrapper .app-module__options > a.active {
+      font-weight: bold; }
+      .app-module__wrapper .app-module__options > a.active i.arrow {
+        border: solid #38925c;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(-45deg); }
   .app-module__wrapper .app-module__body {
     display: grid;
+    grid-template-columns: 1fr;
+    padding: 0 1.3rem 0 1.3rem;
+    grid-template-rows: 120px 1fr;
     align-content: center;
     justify-content: center; }
+
+.module-options__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .module-options__option span {
+    margin-right: 5px; }
+
+.module-date-filter__wrapper {
+  display: grid;
+  align-content: flex-start;
+  padding: 0 1.3rem; }
+  .module-date-filter__wrapper .date-filter__current-date {
+    text-align: center;
+    display: grid;
+    align-items: flex-end;
+    padding-bottom: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    height: 120px; }
+  .module-date-filter__wrapper .date-filter__calendar {
+    border: 1px solid #e2e2e2;
+    border-radius: 3px; }
+    .module-date-filter__wrapper .date-filter__calendar .calendar__item {
+      width: 100%;
+      height: 60px;
+      position: relative;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #e2e2e2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 1rem; }
+      .module-date-filter__wrapper .date-filter__calendar .calendar__item .calendar__item--description {
+        font-weight: bold;
+        margin-bottom: 0.5rem; }
+      .module-date-filter__wrapper .date-filter__calendar .calendar__item i.arrow {
+        position: absolute;
+        right: 15px;
+        top: 25px;
+        border: solid #38925c;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(-45deg); }
+    .module-date-filter__wrapper .date-filter__calendar .calendar__item.active {
+      background: #eff9f3; }
+    .module-date-filter__wrapper .date-filter__calendar .calendar__item.pastday {
+      color: rgba(75, 87, 80, 0.35); }
+
+.module-input-filters__wrapper {
+  padding: 2rem 2rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 2.3rem; }
+  .module-input-filters__wrapper .input-filters__inputs-wrapper {
+    display: grid;
+    grid-gap: 20px;
+    width: 400px;
+    grid-template-columns: repeat(auto-fill, 100px); }
+    .module-input-filters__wrapper .input-filters__inputs-wrapper select {
+      border-radius: 3px;
+      border: 1px solid #e2e2e2;
+      box-shadow: 0 0px 1px rgba(0, 0, 0, 0.12);
+      height: 30px; }
+      .module-input-filters__wrapper .input-filters__inputs-wrapper select option {
+        height: 60px; }
+    .module-input-filters__wrapper .input-filters__inputs-wrapper #source-filter {
+      width: 150px;
+      grid-column-end: -1; }
+  .module-input-filters__wrapper .clear-filters__wrapper button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer; }
+
+.module-main-area__wrapper {
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  padding: 0 1.3rem; }

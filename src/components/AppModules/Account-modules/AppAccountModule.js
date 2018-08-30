@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import ModuleOptionsFrame from "./ModuleOptionsFrame";
+import ModuleOptionsFrame from "../App-shared/ModuleOptionsFrame";
 import { Route, Switch } from "react-router-dom";
 import { Redirect } from "react-router";
 
 import AccountPasswordModule from "./AccountPasswordModule";
 import AccountSettingsModule from "./AccountSettingsModule";
+import AccountIndexModule from "./AccountIndexModule";
 
 export default class AppAccountModule extends Component {
   render() {
@@ -26,6 +27,7 @@ export default class AppAccountModule extends Component {
           <ModuleOptionsFrame options={moduleOptions} />
         </div>
         <Switch>
+          <Route path={`${match.url}`} exact component={AccountIndexModule} />
           <Route
             path={`${match.url}/password`}
             exact

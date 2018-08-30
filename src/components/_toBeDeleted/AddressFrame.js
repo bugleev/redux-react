@@ -15,8 +15,11 @@ class AddressFrame extends Component {
     const path = props.location.pathname;
     let arr = path.split("/");
     arr.shift();
+
     const names = arr.map(el => {
       switch (el) {
+        case "dashboard":
+          return "Администрирование";
         case "delivery":
           return "Настройки доставки";
         case "account":
@@ -25,17 +28,25 @@ class AddressFrame extends Component {
           return "Управление паролем";
         case "settings":
           return "Управление настройками";
+        case "intervals":
+          return "Интервалы";
+        case "resources":
+          return "Ресурсы";
+        case "prices":
+          return "Цены";
         default:
           return null;
       }
     });
+
     let links = [];
-    if (arr.length > 1) {
-      arr = arr.reduce((acc, curr) => {
-        links.push(acc + "/" + curr);
-        return acc + "/" + curr;
-      });
-    }
+    if (arr.length === 1) links.push(arr[0]);
+    arr = arr.reduce((acc, curr, ind) => {
+      if (ind === 1) links.push(acc);
+      links.push(acc + "/" + curr);
+      return acc + "/" + curr;
+    });
+
     return {
       currentPath: {
         names: names,
@@ -57,21 +68,18 @@ class AddressFrame extends Component {
       <div className="app-addressframe">
         <div className="addressframe__module-name">
           <span>
-            {currentPath.names[0] === null
+            {currentPath.names.length === 1
               ? "Администрирование"
-              : currentPath.names[0]}
+              : currentPath.names[1]}
           </span>
         </div>
         <div className="addressframe__address-bar">
-          <NavLink to="/dashboard">
-            <span className="address-bar__link">Администрирование</span>
-          </NavLink>
           {currentPath.names.map(
             (el, id) =>
               el && (
                 <React.Fragment key={el}>
-                  <span>></span>
-                  <NavLink to={`/${links[id - 1]}`}>
+                  {id > 0 && <span className="address-bar__dash">></span>}
+                  <NavLink to={`/${links[id]}`}>
                     <span className="address-bar__link">{el}</span>
                   </NavLink>
                 </React.Fragment>
