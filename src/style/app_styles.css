@@ -54,6 +54,9 @@
     padding: 4px;
     margin-left: 1px;
     transform: rotate(135deg); }
+  .app-sideframe__hide-options i.arrow.right {
+    margin-left: 0;
+    transform: rotate(-45deg); }
 
 .sideframe__logo-wrapper {
   display: flex;
@@ -88,6 +91,9 @@
     .app-addressframe .addressframe__address-bar .address-bar__dash {
       padding-top: 7px;
       vertical-align: sub; }
+
+.app-module__wrapper.hidden {
+  grid-template-columns: none; }
 
 .app-module__wrapper {
   width: 100%;

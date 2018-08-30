@@ -19,13 +19,19 @@ export default class MainPage extends React.Component {
   render() {
     return (
       <div className="app-container">
-        <SideFrame toggleOptions={this.toggleOptionsFrame} />
+        <SideFrame
+          toggleOptions={this.toggleOptionsFrame}
+          optionsVisible={this.state.showOptionsFrame}
+        />
         <AddressFrame />
-
         <Route
           path="/dashboard"
-          component={AppAdminModule}
-          optionsVisible={this.state.showOptionsFrame}
+          render={props => (
+            <AppAdminModule
+              optionsVisible={this.state.showOptionsFrame}
+              {...props}
+            />
+          )}
         />
       </div>
     );

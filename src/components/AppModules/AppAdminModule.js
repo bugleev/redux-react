@@ -11,7 +11,7 @@ export default class AppAdminModule extends Component {
   render() {
     const { match } = this.props;
     console.log(this.props);
-
+    const visibleClass = this.props.optionsVisible ? "" : "hidden";
     const AdminOptions = [
       {
         name: "Интервалы доставки",
@@ -29,10 +29,13 @@ export default class AppAdminModule extends Component {
     ];
 
     return (
-      <div className="app-module__wrapper">
-        <div className="app-module__options">
-          <ModuleOptionsFrame options={AdminOptions} />
-        </div>
+      <div className={`app-module__wrapper ${visibleClass}`}>
+        {this.props.optionsVisible && (
+          <div className="app-module__options">
+            <ModuleOptionsFrame options={AdminOptions} />
+          </div>
+        )}
+
         <div className="app-module__body">
           <Switch>
             <Route
