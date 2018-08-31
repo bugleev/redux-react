@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DeliveryResourcesTable from "./DeliveryResourcesTable";
 
 export default class DeliveryResourcesModule extends Component {
   render() {
@@ -14,11 +15,10 @@ export default class DeliveryResourcesModule extends Component {
             <select name="segment" id="segment-filter" />
             <select name="source" id="source-filter" />
           </div>
-          <div className="clear-filters__wrapper">
-            <button>Очистить фильтры</button>
-          </div>
         </div>
-        <div className="module-main-area__wrapper">Main</div>
+        <div className="module-main-area__wrapper">
+          <DeliveryResourcesTable />
+        </div>
       </React.Fragment>
     );
   }

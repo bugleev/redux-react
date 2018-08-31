@@ -24,9 +24,9 @@ export default class SudeFrame extends React.Component {
           <div className="sideframe__user-icon">User Icon</div>
           <div className="sideframe__user-options">
             <a href="">
-              <span className="dot" />
-              <span className="dot" />
-              <span className="dot" />
+              <span className="sideframe__dot" />
+              <span className="sideframe__dot" />
+              <span className="sideframe__dot" />
             </a>
           </div>
         </div>

@@ -28,7 +28,7 @@
   margin-bottom: 1rem
 .st0
   fill: #d7e9de
-.dot
+.sideframe__dot
   height: 4px
   width: 4px
   background-color: #9bc8ad
@@ -152,8 +152,7 @@
       .calendar__item--description
         font-weight: bold
         margin-bottom: 0.5rem
-      i.arrow  
-        
+      i.arrow          
         position: absolute
         right: 15px
         top: 25px
@@ -190,15 +189,138 @@
     #source-filter
       width: 150px
       grid-column-end: -1
-  .clear-filters__wrapper
-    button
-      border: none
-      background-color: transparent
-      cursor: pointer
+  // .clear-filters__wrapper
+  //   button
+  //     border: none
+  //     background-color: transparent
+  //     cursor: pointer
 
 .module-main-area__wrapper
   border: 1px solid #e2e2e2
-  border-radius: 3px
-  padding: 0 1.3rem
- 
-  
+  border-radius: 3px  
+  display: grid
+  align-content: flex-start
+  overflow: auto
+  color: #333  
+
+.resources-table__header
+  height: 70px
+  padding: 1rem
+  display: grid
+  grid-template-columns:  200px 250px 1fr 100px
+  justify-content: space-around
+  align-content: center
+  border-bottom: 1px solid #38925c
+  font-weight: bold
+  >span 
+    text-align: center
+  .resources-header__shifts-wrapper
+    display: grid
+    grid-gap: 20px
+    grid-template-columns: 300px
+    grid-auto-flow: column
+    justify-content: space-around
+    grid-auto-columns: 300px
+
+
+.resources-table__row
+  height: 70px
+  padding: 1rem
+  display: grid
+  grid-template-columns:  200px 250px 1fr 100px
+  justify-content: space-around
+  align-content: center
+  border-bottom: 1px solid #e2e2e2
+  .resources-table__shifts-wrapper   
+    display: grid
+    grid-gap: 20px    
+    grid-template-columns: 330px
+    grid-auto-flow: column
+    justify-content: space-around
+    grid-auto-columns: 330px
+    .resources-table__shift
+      display: flex
+      justify-content: space-between
+      .resources-table__hub-name
+        text-align: left
+        padding-left: 15px
+        width: 200px
+      .resources-table__hub-dropdown
+        display: flex
+        align-items: center
+        .Dropdown-control
+          padding: 8px 32px 8px 10px
+          .Dropdown-placeholder
+            font-size: 0.95rem
+            width: 140px
+            white-space: nowrap
+            overflow: hidden
+            text-overflow: ellipsis
+        .Dropdown-menu
+          max-height: 600px
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16)
+          .Dropdown-option:hover,.Dropdown-option.is-selected
+            background-color: #eff9f3                    
+      .resources-table__shift-van-amount
+        display: flex
+        align-items: center
+  .resources-table__cluster-name, .resources-table__overall-van-amount
+    display: flex
+    align-items: center
+    justify-content: center
+  .resources-table__overall-van-amount,.resources-table__shift-van-amount
+    padding-left: 60px  
+    >span:first-child
+      margin-right: 10px
+      display: flex
+      align-items: center   
+    >span
+      margin-right: 20px
+      font-weight: bold
+      height: 10px
+      line-height: 12px
+      svg
+        color: #bfbfbf
+        width: 1.8rem
+        height: 1.8rem
+    .van-amount__button
+      padding-left: 30px
+      margin-bottom: 5px    
+    i.arrow__down      
+        border: solid #38925c
+        border-width: 0 2px 2px 0
+        display: inline-block
+        padding: 3px
+        transform: rotate(45deg)
+  .resources-table__overall-van-amount
+    >span 
+      svg
+        color: #65c68c     
+  .resources-table__cluster-name
+    >span 
+      padding: 0.2rem 0.7rem
+      border: 1px solid #92bcee
+  .resources-table__menu-wrapper
+    display: flex
+    align-items: center
+    justify-content: center
+    >span 
+      svg
+        color: #333   
+    .menu-wrapper__controls
+      button
+        border: none
+        background-color: transparent
+        cursor: pointer
+      button:first-child
+        color: #38925c 
+        text-decoration: underline 
+.resources-table__row.editable
+  background-color: darken(#fdfdfd, 2%) 
+.menu__dot
+  height: 4px
+  width: 4px
+  background-color: #9bc8ad
+  border-radius: 50%
+  margin: 0 1px
+  display: inline-block  
