@@ -319,48 +319,6 @@ hr {
   .module-options__option span {
     margin-right: 5px; }
 
-.module-date-filter__wrapper {
-  display: grid;
-  align-content: flex-start;
-  padding: 0 1.3rem; }
-  .module-date-filter__wrapper .date-filter__current-date {
-    text-align: center;
-    display: grid;
-    align-items: flex-end;
-    padding-bottom: 2rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    height: 120px; }
-  .module-date-filter__wrapper .date-filter__calendar {
-    border: 1px solid #e2e2e2;
-    border-radius: 3px; }
-    .module-date-filter__wrapper .date-filter__calendar .calendar__item {
-      width: 100%;
-      height: 60px;
-      position: relative;
-      font-size: 0.9rem;
-      border-bottom: 1px solid #e2e2e2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-left: 1rem; }
-      .module-date-filter__wrapper .date-filter__calendar .calendar__item .calendar__item--description {
-        font-weight: bold;
-        margin-bottom: 0.5rem; }
-      .module-date-filter__wrapper .date-filter__calendar .calendar__item i.arrow {
-        position: absolute;
-        right: 15px;
-        top: 25px;
-        border: solid #38925c;
-        border-width: 0 3px 3px 0;
-        display: inline-block;
-        padding: 3px;
-        transform: rotate(-45deg); }
-    .module-date-filter__wrapper .date-filter__calendar .calendar__item.active {
-      background: #eff9f3; }
-    .module-date-filter__wrapper .date-filter__calendar .calendar__item.pastday {
-      color: rgba(75, 87, 80, 0.35); }
-
 .module-input-filters__wrapper {
   padding: 2rem 2rem 2rem 0;
   display: flex;
@@ -371,17 +329,10 @@ hr {
     display: grid;
     grid-gap: 20px;
     width: 400px;
-    grid-template-columns: repeat(auto-fill, 100px); }
-    .module-input-filters__wrapper .input-filters__inputs-wrapper select {
-      border-radius: 3px;
-      border: 1px solid #e2e2e2;
-      box-shadow: 0 0px 1px rgba(0, 0, 0, 0.12);
-      height: 30px; }
-      .module-input-filters__wrapper .input-filters__inputs-wrapper select option {
-        height: 60px; }
-    .module-input-filters__wrapper .input-filters__inputs-wrapper #source-filter {
-      width: 150px;
-      grid-column-end: -1; }
+    grid-template-columns: 170px 100px; }
+    .module-input-filters__wrapper .input-filters__inputs-wrapper label {
+      font-size: 0.95rem;
+      padding-bottom: 1rem; }
 
 .module-main-area__wrapper {
   border: 1px solid #e2e2e2;
@@ -429,6 +380,7 @@ hr {
       display: flex;
       justify-content: space-between; }
       .resources-table__row .resources-table__shifts-wrapper .resources-table__shift .resources-table__hub-name {
+        font-size: 0.95rem;
         text-align: left;
         padding-left: 15px;
         width: 200px; }
@@ -482,14 +434,17 @@ hr {
   .resources-table__row .resources-table__overall-van-amount > span svg {
     color: #65c68c; }
   .resources-table__row .resources-table__cluster-name > span {
+    font-weight: bold;
     padding: 0.2rem 0.7rem;
     border: 1px solid #92bcee; }
   .resources-table__row .resources-table__menu-wrapper {
     display: flex;
     align-items: center;
     justify-content: center; }
-    .resources-table__row .resources-table__menu-wrapper > span svg {
-      color: #333; }
+    .resources-table__row .resources-table__menu-wrapper > span {
+      cursor: pointer; }
+      .resources-table__row .resources-table__menu-wrapper > span svg {
+        color: #333; }
     .resources-table__row .resources-table__menu-wrapper .menu-wrapper__controls button {
       border: none;
       background-color: transparent;
@@ -508,3 +463,116 @@ hr {
   border-radius: 50%;
   margin: 0 1px;
   display: inline-block; }
+
+.date-menu__wrapper {
+  position: relative; }
+  .date-menu__wrapper .popup-date-filter__wrapper {
+    position: absolute;
+    display: grid;
+    align-content: flex-start;
+    margin-top: -1px;
+    width: 170px;
+    z-index: 10;
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16); }
+    .date-menu__wrapper .popup-date-filter__wrapper .date-filter__current-date {
+      text-align: center;
+      display: grid;
+      align-items: flex-end;
+      padding-bottom: 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      height: 120px; }
+    .date-menu__wrapper .popup-date-filter__wrapper .date-filter__calendar {
+      border: 1px solid #e2e2e2;
+      border-radius: 3px; }
+      .date-menu__wrapper .popup-date-filter__wrapper .date-filter__calendar .calendar__item {
+        width: 100%;
+        height: 60px;
+        position: relative;
+        font-size: 0.9rem;
+        border-bottom: 1px solid #e2e2e2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 1rem; }
+        .date-menu__wrapper .popup-date-filter__wrapper .date-filter__calendar .calendar__item .calendar__item--description {
+          font-weight: bold;
+          margin-bottom: 0.5rem; }
+        .date-menu__wrapper .popup-date-filter__wrapper .date-filter__calendar .calendar__item i.arrow {
+          position: absolute;
+          right: 15px;
+          top: 25px;
+          border: solid #38925c;
+          border-width: 0 3px 3px 0;
+          display: inline-block;
+          padding: 3px;
+          transform: rotate(-45deg); }
+      .date-menu__wrapper .popup-date-filter__wrapper .date-filter__calendar .calendar__item:hover {
+        background: #eff9f3;
+        cursor: pointer; }
+      .date-menu__wrapper .popup-date-filter__wrapper .date-filter__calendar .calendar__item.active {
+        background: #eff9f3; }
+      .date-menu__wrapper .popup-date-filter__wrapper .date-filter__calendar .calendar__item.pastday {
+        color: rgba(75, 87, 80, 0.35); }
+
+.date-menu__control {
+  width: 170px;
+  margin-top: 0.3rem;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  padding: 4px 32px 4px 10px;
+  transition: all 200ms ease; }
+  .date-menu__control .date-menu__placeholder {
+    font-size: 0.95rem;
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .date-menu__control .date-menu__arrow {
+    border-color: #333 transparent transparent;
+    border-style: solid;
+    border-width: 5px 5px 0;
+    content: ' ';
+    display: block;
+    height: 0;
+    margin-top: -ceil(2.5);
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    width: 0; }
+
+.input-filters__cluster-dropdown > div {
+  margin-top: 0.3rem; }
+
+.input-filters__cluster-dropdown .Dropdown-control {
+  width: 100px;
+  padding: 4px 32px 4px 10px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12); }
+  .input-filters__cluster-dropdown .Dropdown-control .Dropdown-placeholder {
+    font-size: 0.95rem;
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+
+.input-filters__cluster-dropdown .Dropdown-menu {
+  max-height: 600px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16); }
+  .input-filters__cluster-dropdown .Dropdown-menu .Dropdown-option:hover, .input-filters__cluster-dropdown .Dropdown-menu .Dropdown-option.is-selected {
+    background-color: #eff9f3; }
+
+.input-filters__cluster-dropdown .Dropdown-arrow {
+  border-color: #333 transparent transparent;
+  top: 12px; }
+
+.input-filters__cluster-dropdown .is-open .Dropdown-arrow {
+  border-color: transparent transparent #333; }

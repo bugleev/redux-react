@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { MdLocalShipping, MdModeEdit } from "react-icons/md";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-
-const toggleState = key => state => ({ [key]: !state[key] });
+import { toggleStateKey } from "../../../../utils/toggleStateKey";
 
 export default class DeliveryResourcesTableRow extends Component {
   state = {
@@ -11,7 +10,7 @@ export default class DeliveryResourcesTableRow extends Component {
   };
 
   triggerEditableMode = () => {
-    this.setState(toggleState("editableMode"));
+    this.setState(toggleStateKey("editableMode"));
   };
   render() {
     const options = [

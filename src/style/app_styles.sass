@@ -124,48 +124,6 @@
   span 
    margin-right: 5px 
 
-.module-date-filter__wrapper  
-  display: grid
-  align-content: flex-start
-  padding: 0 1.3rem   
-  .date-filter__current-date
-    text-align: center
-    display: grid
-    align-items: flex-end
-    padding-bottom: 2rem
-    font-size: 1.2rem
-    font-weight: bold
-    height: 120px
-  .date-filter__calendar
-    border: 1px solid #e2e2e2
-    border-radius: 3px
-    .calendar__item
-      width: 100%
-      height: 60px
-      position: relative
-      font-size: 0.9rem
-      border-bottom: 1px solid #e2e2e2
-      display: flex
-      flex-direction: column      
-      justify-content: center
-      padding-left: 1rem
-      .calendar__item--description
-        font-weight: bold
-        margin-bottom: 0.5rem
-      i.arrow          
-        position: absolute
-        right: 15px
-        top: 25px
-        border: solid #38925c
-        border-width: 0 3px 3px 0
-        display: inline-block
-        padding: 3px
-        transform: rotate(-45deg)
-    .calendar__item.active
-      background: #eff9f3
-    .calendar__item.pastday
-      color: rgba(75, 87, 80, 0.35)
-
 
 
 .module-input-filters__wrapper
@@ -178,17 +136,10 @@
     display: grid
     grid-gap: 20px
     width: 400px
-    grid-template-columns: repeat(auto-fill, 100px)
-    select
-      border-radius: 3px
-      border: 1px solid #e2e2e2
-      box-shadow: 0 0px 1px rgba(0,0,0,0.12)
-      height: 30px
-      option
-        height: 60px
-    #source-filter
-      width: 150px
-      grid-column-end: -1
+    grid-template-columns: 170px 100px
+    label
+      font-size: 0.95rem
+      padding-bottom: 1rem
   // .clear-filters__wrapper
   //   button
   //     border: none
@@ -242,6 +193,7 @@
       display: flex
       justify-content: space-between
       .resources-table__hub-name
+        font-size: 0.95rem
         text-align: left
         padding-left: 15px
         width: 200px
@@ -297,14 +249,16 @@
       svg
         color: #65c68c     
   .resources-table__cluster-name
-    >span 
+    >span
+      font-weight: bold 
       padding: 0.2rem 0.7rem
       border: 1px solid #92bcee
   .resources-table__menu-wrapper
     display: flex
     align-items: center
     justify-content: center
-    >span 
+    >span
+      cursor: pointer 
       svg
         color: #333   
     .menu-wrapper__controls
@@ -323,4 +277,115 @@
   background-color: #9bc8ad
   border-radius: 50%
   margin: 0 1px
-  display: inline-block  
+  display: inline-block 
+
+.date-menu__wrapper
+  position: relative  
+  .popup-date-filter__wrapper
+    position: absolute  
+    display: grid
+    align-content: flex-start
+    margin-top: -1px  
+    width: 170px
+    z-index: 10
+    background-color: #fff 
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16)  
+    .date-filter__current-date
+      text-align: center
+      display: grid
+      align-items: flex-end
+      padding-bottom: 2rem
+      font-size: 1.2rem
+      font-weight: bold
+      height: 120px
+    .date-filter__calendar
+      border: 1px solid #e2e2e2
+      border-radius: 3px
+      .calendar__item
+        width: 100%
+        height: 60px
+        position: relative
+        font-size: 0.9rem
+        border-bottom: 1px solid #e2e2e2
+        display: flex
+        flex-direction: column      
+        justify-content: center
+        padding-left: 1rem
+        .calendar__item--description
+          font-weight: bold
+          margin-bottom: 0.5rem
+        i.arrow          
+          position: absolute
+          right: 15px
+          top: 25px
+          border: solid #38925c
+          border-width: 0 3px 3px 0
+          display: inline-block
+          padding: 3px
+          transform: rotate(-45deg)
+      .calendar__item:hover
+        background: #eff9f3
+        cursor: pointer
+      .calendar__item.active
+        background: #eff9f3
+      .calendar__item.pastday
+        color: rgba(75, 87, 80, 0.35)
+
+
+
+.date-menu__control
+  width: 170px
+  margin-top: 0.3rem
+  position: relative
+  overflow: hidden
+  background-color: white
+  border: 1px solid #e2e2e2
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12)
+  border-radius: 2px  
+  box-sizing: border-box
+  color: #333
+  cursor: pointer
+  outline: none
+  padding: 4px 32px 4px 10px   
+  transition: all 200ms ease
+  .date-menu__placeholder
+    font-size: 0.95rem
+    width: 120px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+  .date-menu__arrow
+    border-color: #333 transparent transparent
+    border-style: solid
+    border-width: 5px 5px 0
+    content: ' '
+    display: block
+    height: 0
+    margin-top: -ceil(2.5)
+    position: absolute
+    right: 10px
+    top: 12px
+    width: 0   
+.input-filters__cluster-dropdown
+  >div
+    margin-top: 0.3rem
+  .Dropdown-control
+    width: 100px
+    padding: 4px 32px 4px 10px
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12)   
+    .Dropdown-placeholder
+      font-size: 0.95rem
+      width: 80px
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+  .Dropdown-menu
+    max-height: 600px
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16)
+    .Dropdown-option:hover,.Dropdown-option.is-selected
+      background-color: #eff9f3 
+  .Dropdown-arrow
+    border-color: #333 transparent transparent
+    top: 12px
+  .is-open .Dropdown-arrow
+    border-color: transparent transparent #333         
