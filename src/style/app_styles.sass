@@ -282,6 +282,7 @@
 .date-menu__wrapper
   position: relative  
   .popup-date-filter__wrapper
+    user-select: none
     position: absolute  
     display: grid
     align-content: flex-start
@@ -328,8 +329,10 @@
         cursor: pointer
       .calendar__item.active
         background: #eff9f3
-      .calendar__item.pastday
+      .calendar__item.pastday        
         color: rgba(75, 87, 80, 0.35)
+      .calendar__item.pastday:hover        
+        background: #fff
 
 
 

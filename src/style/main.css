@@ -467,6 +467,7 @@ hr {
 .date-menu__wrapper {
   position: relative; }
   .date-menu__wrapper .popup-date-filter__wrapper {
+    user-select: none;
     position: absolute;
     display: grid;
     align-content: flex-start;
@@ -515,6 +516,8 @@ hr {
         background: #eff9f3; }
       .date-menu__wrapper .popup-date-filter__wrapper .date-filter__calendar .calendar__item.pastday {
         color: rgba(75, 87, 80, 0.35); }
+      .date-menu__wrapper .popup-date-filter__wrapper .date-filter__calendar .calendar__item.pastday:hover {
+        background: #fff; }
 
 .date-menu__control {
   width: 170px;

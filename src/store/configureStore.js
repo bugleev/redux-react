@@ -8,11 +8,10 @@ const loggerMiddleware = createLogger();
 const sagaMiddleware = createSagaMiddleware();
 const middleWares = [loggerMiddleware, sagaMiddleware];
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? process.env.NODE_ENV === "development"
+const composeEnhancers =
+  process.env.NODE_ENV === "development"
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : null
-  : null || compose;
+    : compose;
 
 export default function configureStore() {
   const store = createStore(

@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 
 import SideFrame from "./AppModules/Appframe-modules/SideFrame";
 import AddressFrame from "./AppModules/Appframe-modules/AddressFrame";
-import AppAdminModule from "./AppModules/AppAdminModule";
+import DashboardComponent from "./AppModules/DashboardComponent";
 
 export default class MainPage extends React.Component {
   state = {
@@ -27,7 +27,7 @@ export default class MainPage extends React.Component {
         <Route
           path="/dashboard"
           render={props => (
-            <AppAdminModule
+            <DashboardComponent
               optionsVisible={this.state.showOptionsFrame}
               {...props}
             />

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import ResourcesTableHeader from "./ResourcesTableHeader";
+import DeliveryResourcesTableHeader from "./DeliveryResourcesTableHeader";
 import DeliveryResourcesTableRow from "./DeliveryResourcesTableRow";
 
 export default class DeliveryResourcesTable extends Component {
   render() {
     return (
       <React.Fragment>
-        <ResourcesTableHeader />
+        <DeliveryResourcesTableHeader />
         <DeliveryResourcesTableRow />
       </React.Fragment>
     );

@@ -7,7 +7,7 @@ import DeliveryIntervalsModule from "./Delivery-modules/Delivery-intervals/Deliv
 import DeliveryResourcesModule from "./Delivery-modules/Delivery-resources/DeliveryResourcesModule";
 import DeliveryPricesModule from "./Delivery-modules/Delivery-prices/DeliveryPricesModule";
 
-export default class AppAdminModule extends Component {
+export default class DashboardComponent extends Component {
   render() {
     const { match } = this.props;
     console.log(this.props);
