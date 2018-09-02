@@ -10,15 +10,15 @@ export default class UICalendarDropDown extends Component {
         <div className="date-filter__calendar">
           <div className="calendar__item pastday">
             <span className="calendar__item--description">Предыдущий день</span>
-            <span>1 сентября</span>
+            <span>2 сентября</span>
           </div>
           <div className="calendar__item active">
             <span className="calendar__item--description">Текущий день</span>
             <i className="arrow" />
-            <span>1 сентября</span>
+            <span>2 сентября</span>
           </div>
           <div className="calendar__item">
-            <span>1 сентября</span>
+            <span>2сентября</span>
           </div>
           <div className="calendar__item">
             <span>1 сентября</span>
