@@ -9,7 +9,9 @@ export default class UICalendarDropDown extends Component {
         </div>
         <div className="date-filter__calendar">
           <div className="calendar__item pastday">
-            <span className="calendar__item--description">Предыдущий день</span>
+            <span className="calendar__item--description">
+              Предыдущиий день
+            </span>
             <span>1 сентября</span>
           </div>
           <div className="calendar__item active">
